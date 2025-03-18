@@ -152,43 +152,59 @@ int main(){
     int quantity[100],coffee_size,choose;
     bool check;
     do{
-        cout<<"\t======= Welcome to coffee stock =========="<<endl;
-        cout<<"\t[1] Create a coffee stock"<<endl;
-        cout<<"\t[2] Display all coffee"<<endl;
-        cout<<"\t[3] Search for coffee by name or code"<<endl;
-        cout<<"\t[4] Update coffee details"<<endl;
-        cout<<"\t[5] Delete coffee by name or code"<<endl;
-        cout<<"\t[6] Insert / Add coffee to stock"<<endl;
-        cout<<"\t[7] Sort coffee by name or code"<<endl;
-        cout<<"\t[0] Exit"<<endl;
-        cout<<"\t=========================================="<<endl;
-        cout<<"\tChoose an option: ";cin>>choose;
+        cout<<"\t\t======= Welcome to coffee stock =========="<<endl;
+        cout<<"\t\t[1] Create a coffee stock"<<endl;
+        cout<<"\t\t[2] Display all coffee"<<endl;
+        cout<<"\t\t[3] Search for coffee by name or code"<<endl;
+        cout<<"\t\t[4] Update coffee details"<<endl;
+        cout<<"\t\t[5] Delete coffee by name or code"<<endl;
+        cout<<"\t\t[6] Insert / Add coffee to stock"<<endl;
+        cout<<"\t\t[7] Sort coffee by name or code"<<endl;
+        cout<<"\t\t[0] Exit"<<endl;
+        cout<<"\t\t=========================================="<<endl;
+        cout<<"\t\t=>Choose an option: ";cin>>choose;
         switch(choose){
             case 0 :{
-                cout<<"\t==========[Thank you for using our program]==========="<<endl;
+                cout<<"\t\t=========================================="<<endl;
+                cout<<"\t\t                Thank you                 "<<endl;
+                cout<<"\t\t=========================================="<<endl;
                 break;
             }
             case 1 : {
-                cout<<"\t==============[Create stock of coffee]================"<<endl;
-                cout<<"Enter the stock size of coffee : ";cin>>coffee_size;
+                cout<<"\t\t=========================================="<<endl;
+                cout<<"\t\t             [Create Coffee]              "<<endl;
+                cout<<"\t\t=========================================="<<endl;
+                cout<<"\t\t => Enter the stock size of coffee : ";cin>>coffee_size;
                 for(int i=0;i<coffee_size;i++){
-                    cout<<"\t\t===============[Stock {"<<i+1<<"}]============="<<endl;
-                    cout<<"Enter coffee code : ";cin>>code[i];
-                    cout<<"Enter coffee name : ";cin>>name[i];
-                    cout<<"Enter coffee price : ";cin>>price[i];
-                    cout<<"Enter coffee quantity : ";cin>>quantity[i];
+                    cout<<"\t\t=========================================="<<endl;
+                    cout<<"\t\tEnter coffee code : ";cin>>code[i];
+                    cout<<"\t\tEnter coffee name : ";cin>>name[i];
+                    cout<<"\t\tEnter coffee price : ";cin>>price[i];
+                    cout<<"\t\tEnter coffee quantity : ";cin>>quantity[i];
                     cout<<endl;
+                    cout<<"\t\t=========================================="<<endl;
                 }
-                cout<<"\t======= Create stock is completed================"<<endl;
+                cout<<"\t\t=========================================="<<endl;
+                cout<<"\t\t             Create Complate              "<<endl;
+                cout<<"\t\t=========================================="<<endl;
                 break;
             }
             case 2 :{
-                cout<<"\t=========[Display stock of coffee]================="<<endl;
-                cout<<"\tCode\tName\t\tPrice\tQuantity"<<endl;
+                cout<<"\t\t=========================================="<<endl;
+                cout<<"\t\t             Display Coffee               "<<endl;
+                cout<<"\t\t=========================================="<<endl;
+                cout<<"\t\t"<<setw(6)<<"Code"
+							<<setw(12)<<"Name"
+							<<setw(12)<<"Price"
+							<<setw(12)<<"Quantity"<<endl;
                 for(int i=0;i<coffee_size;i++){
-                    cout<<"\t"<<code[i]<<'\t'<<name[i]<<"\t"<<price[i]<<"\t"<<quantity[i]<<endl;
+                    cout<<"\t\t"<<setw(6)<<code[i]
+								<<setw(12)<<name[i]
+								<<setw(12)<<price[i]
+								<<setw(12)<<quantity[i]<<endl;
+                    cout<<"\t\t=========================================="<<endl;
                 }
-                cout<<"\t============[Display End]===================="<<endl;
+                cout<<"\t\t=========================================="<<endl;
                 break;
             }
             case 3 :{
@@ -198,55 +214,97 @@ int main(){
                 int option;
 
                 do{
-                    cout<<"\t=====================[Search Coffee]====================="<<endl;
-                    cout<<"\t What you want to search"<<endl;
-                    cout<<"\t 1. Search By Code."<<endl;
-                    cout<<"\t 2. Search By Name."<<endl;
-                    cout<<"\t 0. Go Back to Menu."<<endl;
-                    cout<<"\t=========================================="<<endl;
-                    cout<<"\tChoose an option: ";cin>>option;
+                    cout<<"\t\t=========================================="<<endl;
+                    cout<<"\t\t               Search Coffee              "<<endl;
+                    cout<<"\t\t=========================================="<<endl;
+                    cout<<"\t\t What you want to search"<<endl;
+                    cout<<"\t\t 1. Search By Code."<<endl;
+                    cout<<"\t\t 2. Search By Name."<<endl;
+                    cout<<"\t\t 0. Go Back to Menu."<<endl;
+                    cout<<"\t\t=========================================="<<endl;
+                    cout<<"\t\tChoose an option: ";cin>>option;
                     switch(option){
                         case 1 :{
-                            cout<<"\t Enter the code for search coffee :";cin>>search_code;
+                            cout<<"\t\t => Enter the code for search coffee :";cin>>search_code;
                             for (int i= 0;i<coffee_size;i++){
                                 if(code[i]==search_code){
-                                    cout<<"\t=============[Search Result]====================="<<endl;
-                                    cout<<"\tCode\tName\t\tPrice\tQuantity"<<endl;
-                                    cout<<"\t"<<code[i]<<'\t'<<name[i]<<"\t"<<price[i]<<"\t"<<quantity[i]<<endl;
-                                    cout<<"\t=============[Search End]===================="<<endl;
+                                    cout<<"\t\t=========================================="<<endl;
+                                    cout<<"\t\t               Search Found               "<<endl;
+                                    cout<<"\t\t=========================================="<<endl;
+                                    cout<<"\t\t"<<setw(6)<<"Code"
+												<<setw(12)<<"Name"
+												<<setw(12)<<"Price"
+												<<setw(12)<<"Quantity"<<endl;
+                                    cout<<"\t\t"<<setw(6)<<code[i]
+												<<setw(12)<<name[i]
+												<<setw(12)<<price[i]
+												<<setw(12)<<quantity[i]<<endl;
+                                    cout<<"\t\t=========================================="<<endl;
                                     check = false;
                                     break;
                                 }
                             }
                             if(check){
-                                cout<<"\tNo coffee found with this code."<<endl;
+                                cout<<"\t\tNo coffee found with this code."<<endl;
                             }
-
                             break;
                         }  
 						case 2 : {
-							cout<<"\t Enter the name coffee for search : ";cin>>search_name;
+							cout<<"\t\t=> Enter the name coffee for search : ";cin>>search_name;
 							for(int i=0;i<coffee_size;i++){
 								if(name[i]==search_name){
-									cout<<"Name Found indedx ["<<i<<"]."<<endl;
-									cout<<"\tCode"<<setw(12)<<"Name"<<setw(12)<<"Price"<<setw(12)<<"Quantity"<<endl;
-									cout<<"\t"<<code[i]<<setw(12)<<name[i]<<setw(12)<<price[i]<<setw(12)<<quantity[i]<<endl;
-									check = false;
-									break;
+									cout<<"\t\t=========================================="<<endl;
+                                    cout<<"\t\t               Search Found               "<<endl;
+                                    cout<<"\t\t=========================================="<<endl;
+                                    cout<<"\t\t"<<setw(6)<<"Code"
+												<<setw(12)<<"Name"
+												<<setw(12)<<"Price"
+												<<setw(12)<<"Quantity"<<endl;
+                                    cout<<"\t\t"<<setw(6)<<code[i]
+												<<setw(12)<<name[i]
+												<<setw(12)<<price[i]
+												<<setw(12)<<quantity[i]<<endl;
+                                    cout<<"\t\t=========================================="<<endl;
+                                    check = false;
+                                    break;
 								}
 							}
 							if(check){
-								cout<<"\tCoffee no found with this name."<<endl;
+								cout<<"\t\tCoffee no found with this name."<<endl;
 							}
 							break;
 						}                     
-                    }
-
-                       
+                    }                      
                 }while(option != 0);
 
                 break;
             }
+            case 4 :{
+            	string update_detail,New_Code,New_Name;
+            	int New_Qty;
+            	float New_Price;
+            	cout<<"\t\t=========================================="<<endl;
+            	cout<<"\t\t              Update Detail               "<<endl;
+            	cout<<"\t\t=========================================="<<endl;
+            	cout<<"\n\t\t => Enter id for update : ";cin>>update_detail;
+            	for(int i=0;i<coffee_size;i++){
+            		if(update_detail==code[i]){
+            			cout<<"\n\t\tEnter New Code   :";cin>>New_Code;
+            			cout<<"\t\tEnter New Name   :";cin>>New_Name;
+            			cout<<"\t\tEnter New Price  :";cin>>New_Price;
+            			cout<<"\t\tEnter New Qty    :";cin>>New_Qty;
+            			name[i] = New_Name;
+            			code[i] = New_Code;
+            			price[i]= New_Price;
+            			quantity[i]=New_Qty;
+            			cout<<"\t\t=========================================="<<endl;
+            			cout<<"\t\t          Update Complate!!!              "<<endl;
+            			cout<<"\t\t=========================================="<<endl;
+            			break; 
+					}
+				}
+				break;
+			}
         }
 
     }while(choose != 0);
