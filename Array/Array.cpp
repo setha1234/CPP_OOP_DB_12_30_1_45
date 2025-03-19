@@ -292,7 +292,7 @@ int main(){
             			cout<<"\n\t\tEnter New Code   :";cin>>New_Code;
             			cout<<"\t\tEnter New Name   :";cin>>New_Name;
             			cout<<"\t\tEnter New Price  :";cin>>New_Price;
-            			cout<<"\t\tEnter New Qty    :";cin>>New_Qty;
+            			cout<<"\t\tEnter New Qty    :";cin>>New_Qty; 
             			name[i] = New_Name;
             			code[i] = New_Code;
             			price[i]= New_Price;
