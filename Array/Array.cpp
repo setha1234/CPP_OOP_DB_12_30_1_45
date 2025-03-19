@@ -305,6 +305,24 @@ int main(){
 				}
 				break;
 			}
+			case 6 :{
+				cout<<"\t\t=========================================="<<endl;
+            	cout<<"\t\t            Insert / Add Detail           "<<endl;
+            	cout<<"\t\t=========================================="<<endl;
+            	int add_size;
+            	cout<<"\t\tEnter size coffee to add : ";cin>>add_size;
+            	for(int i = coffee_size;i<coffee_size+add_size;i++){
+            		cout<<"Enter coffee code  : ";cin>>code[i];	
+					cout<<"Enter coffee name  : ";cin>>name[i];
+					cout<<"Enter coffee price : ";cin>>price[i];
+					cout<<"Enter coffee Qty   : ";cin>>quantity[i];	
+				}
+				// Add new Size
+				coffee_size += add_size;
+            	
+            	
+				break;
+			}
         }
 
     }while(choose != 0);
