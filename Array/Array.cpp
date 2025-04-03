@@ -212,7 +212,6 @@ int main(){
                 check = true;
                 string search_code,search_name;
                 int option;
-
                 do{
                     cout<<"\t\t=========================================="<<endl;
                     cout<<"\t\t               Search Coffee              "<<endl;
@@ -271,7 +270,7 @@ int main(){
 							}
 							if(check){
 								cout<<"\t\tCoffee no found with this name."<<endl;
-							}
+							} 
 							break;
 						}                     
                     }                      
@@ -314,7 +313,7 @@ int main(){
                 cout<<"\t\t => Enter code coffee for delete : ";cin>>delete_detail;
                 for(int i=0;i<coffee_size;i++){// check code in stock
                     if(code[i]==delete_detail){ // condition 
-                        for(int j=0;j<coffee_size-1;j++){ // 
+                        for(int j=i;j<coffee_size-1;j++){ 
                             code[j] = code[j+1];
                             name[j] = name[j+1];
                             price[j] = price[j+1];
@@ -352,70 +351,84 @@ int main(){
 				break;
 			}
             case 7 :{
-                // sort 
-                int op;
-                check = false;
-                cout<<"\t\t=========================================="<<endl;
-                cout<<"\t\t              Sorting Detail               "<<endl;
-                cout<<"\t\t=========================================="<<endl;
-                cout<<"\t\tChoose sorting option:"<<endl;
-                cout<<"\t\t 1. Sort by Code."<<endl;
-                cout<<"\t\t 2. Sort by Name."<<endl;
-                cout<<"\t\t 0. Go Back to Menu."<<endl;
-                cout<<"\t\t=========================================="<<endl;
-                cout<<"\t\tChoose an option: ";cin>>op;
-                switch(op){
-                    case 1 :{
-                        for(int i=0;i<coffee_size-1;i++){
-                            for(int j=i+1;j<coffee_size;j++){
-                                if(code[i]>code[j]){
-                                    swap(code[i],code[j]);
-                                    swap(name[i],name[j]);
-                                    swap(price[i],price[j]);
-                                    swap(quantity[i],quantity[j]);
-                                    check = true;
-                                }
-                            }
-                        }
-                        if(!check){
-                            cout<<"\t\tNo need to sort."<<endl;
-                        }else{
-                            cout<<"\t\t=========================================="<<endl;
-                            cout<<"\t\t           Sorting Code Complate           "<<endl;
-                            cout<<"\t\t=========================================="<<endl;
-                        }
-                    }
-                    case 2 :{
-                        for(int i=0;i<coffee_size-1;i++){
-                            for(int j=i+1;j<coffee_size;j++){
-                                if(name[i]>name[j]){
-                                    swap(code[i],code[j]);
-                                    swap(name[i],name[j]);
-                                    swap(price[i],price[j]);
-                                    swap(quantity[i],quantity[j]);
-                                    check = true;
-                                }
-                            }
-                        }
-                        if(!check){
-                            cout<<"\t\tNo need to sort."<<endl;
-                        } else{
-                            cout<<"\t\t=========================================="<<endl;
-                            cout<<"\t\t           Sorting Name Complate           "<<endl;
-                            cout<<"\t\t=========================================="<<endl;
-                        }
-                    }
-                    case 0 : break;
-                    default :{
-                        cout<<"\t\tInvalid option."<<endl;
-                    }
-                }
-            }
+            	check = false;
+            	int op;
+            	cout<<"\t\t=========================================="<<endl;
+            	cout<<"\t\t            Sort Detail           "<<endl;
+            	cout<<"\t\t=========================================="<<endl;
+            	cout<<"\t\t[ 1. Sort by Id."<<endl;
+            	cout<<"\t\t[ 2. Sort by Name."<<endl;
+            	cout<<"\t\t[ 3. Sort by Price."<<endl;
+            	cout<<"\t\t[ => Please choose option : ";cin>>op;
+            	switch(op){ 
+            		case 1 : {
+            			for(int i=0;i<coffee_size;i++){// 1 = 12
+            				for(int j=i+1;j<coffee_size;j++){ // 2 = 6
+            					if(code[i]>code[j]){
+            						swap(code[i],code[j]);
+            						swap(name[i],name[j]);
+            						swap(price[i],price[j]);
+            						swap(quantity[i],quantity[j]);
+            						check = true;
+								}
+							} 
+						}
+						if(!check){
+							cout<<"\t\t Sort Not Success!"<<endl;
+						}else{
+							cout<<"\t\t Sort Complate!"<<endl;
+						}	
+						break;
+					}
+					case 2 : {
+						for(int i=0;i<coffee_size;i++){// 1 = 12
+            				for(int j=i+1;j<coffee_size;j++){ // 2 = 6
+            					if(name[i]>name[j]){
+            						swap(code[i],code[j]);
+            						swap(name[i],name[j]);
+            						swap(price[i],price[j]);
+            						swap(quantity[i],quantity[j]);
+            						check = true;
+								}
+							} 
+						}
+						if(!check){
+							cout<<"\t\t Sort Not Success!"<<endl;
+						}else{
+							cout<<"\t\t Sort Complate!"<<endl;
+						}
+						break;
+					}
+					case 3 : {
+						for(int i=0;i<coffee_size;i++){// 1 = 12
+            				for(int j=i+1;j<coffee_size;j++){ // 2 = 6
+            					if(price[i]>price[j]){
+            						swap(code[i],code[j]);
+            						swap(name[i],name[j]);
+            						swap(price[i],price[j]);
+            						swap(quantity[i],quantity[j]);
+            						check = true;
+								}
+							} 
+						}
+						if(!check){
+							cout<<"\t\t Sort Not Success!"<<endl;
+						}else{
+							cout<<"\t\t Sort Complate!"<<endl;
+						}
+						break;
+					}
+            		default : {
+            			cout<<"\t\t Invalid Option."<<endl;
+						break;
+					}		
+				}        	
+				break;
+			}
             default :{
                 cout<<"\t\tInvalid option."<<endl;
                 break;
             }
         }
-
     }while(choose != 0);
 }
