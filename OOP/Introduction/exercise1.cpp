@@ -1,18 +1,30 @@
 #include<iostream>
+#include<iomanip>
 using namespace std;
 class Book{
     private : 
         // date member
-        int book_id[10],book_qty[10],choose,size_lib;
-        string book_title[10],author_name[10];
+        int book_id[10],book_qty[10],choose,size_lib,issued[10],qty_issued;
+        string book_title[10],author_name[10],search_item,issued_book;
     public : 
+        Book(){   
+            for(int i=0;i<10;i++){
+                book_id[i] = 0;
+                book_qty[i] = 0;
+                book_title[i] = "Null";
+                author_name[i] = "Null";
+                issued[i]     = 0;
+            }
+            
+        }
         void Create_Book(){
             cout<<"Enter size of books for store in library : ";
             cin>>size_lib;
+            cin.ignore();
             if(size_lib>0 && size_lib < 10){
                 for(int i=0;i<size_lib;i++){
                     cout<<"Book #"<<i+1<<endl;
-                    cout<<"Enter Book Title : ";cin.ignore();getline(cin,book_title[i]);
+                    cout<<"Enter Book Title : ";getline(cin,book_title[i]);
                     cout<<"Enter Book ID    : ";cin>>book_id[i];
                     cout<<"Enter Book Qty   : ";cin>>book_qty[i];
                     cout<<"Enter Book Author: ";cin.ignore();getline(cin,author_name[i]);
@@ -20,6 +32,41 @@ class Book{
                 }
             }else{  
                 cout<<"Sorry I can't store the books.becuase i can store only 10."<<endl;
+            }
+        }
+
+        void Display_Book(){
+            cout<<"ID"<<setw(20)<<"Title"<<setw(20)<<"Quantity"<<setw(20)<<"Author"<<setw(10)<<"Issued"<<endl;
+            for(int i=0;i<size_lib;i++){
+                cout<<book_id[i]<<setw(20)<<book_title[i]<<setw(20)<<book_qty[i]<<setw(20)<<author_name[i]<<setw(10)<<issued[i]<<endl;
+            }
+        }
+        void Search_Book(){
+            cout<<"Enter the title book for search : ";cin>>search_item;
+            for(int i=0;i<size_lib;i++){
+                if(book_title[i]==search_item){
+                    cout<<"ID    : "<<book_id[i]<<endl;
+                    cout<<"Title : "<<book_title[i]<<endl;
+                    cout<<"Author : "<<author_name[i]<<endl;
+                    cout<<"Quantity : "<<book_qty[i]<<endl;
+                    break;
+                }
+            }
+        }
+        void Issued_Book(){
+            cout<<"Enter the title for issued : ";cin>>issued_book;
+            for(int i=0;i<size_lib;i++){
+                if(issued_book==book_title[i]){// check title of book
+                    cout<<"Found it!!"<<endl;
+                    cout<<"What you want to borrow book? => ";cin>>qty_issued;
+                    if(qty_issued > book_qty[i]){
+                        cout<<"Can not borrow it.beacuse we have only : "<<book_qty[i]<<endl;
+                    }else{
+                        cout<<"You can borrow it."<<endl;
+                        issued[i]+=qty_issued;
+                    }
+
+                }
             }
         }
         void Menu(){
@@ -39,6 +86,27 @@ class Book{
                         cout<<"                    Create Book                 "<<endl;
                         cout<<"================================================"<<endl;
                         Create_Book();
+                        break;
+                    }
+                    case 2 : {
+                        cout<<"================================================"<<endl;
+                        cout<<"                   Display Book                 "<<endl;
+                        cout<<"================================================"<<endl;
+                        Display_Book();
+                        break;
+                    }
+                    case 3 : {
+                        cout<<"================================================"<<endl;
+                        cout<<"                  Search Book                   "<<endl;
+                        cout<<"================================================"<<endl;
+                        Search_Book();
+                        break;
+                    }
+                    case 4 : {
+                        cout<<"================================================"<<endl;
+                        cout<<"                  Issued Book                   "<<endl;
+                        cout<<"================================================"<<endl;
+                        Issued_Book();
                         break;
                     }
                 }
