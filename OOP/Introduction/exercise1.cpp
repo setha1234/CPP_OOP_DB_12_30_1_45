@@ -4,8 +4,9 @@ using namespace std;
 class Book{
     private : 
         // date member
-        int book_id[10],book_qty[10],choose,size_lib,issued[10],qty_issued;
-        string book_title[10],author_name[10],search_item,issued_book;
+        int book_id[10],book_qty[10],choose,size_lib,issued[10],qty_issued,n,issued_qty[10];
+        string book_title[10],author_name[10],search_item,issued_book,tel[10],username[10],datetime[10],title_issued[10];
+        bool check;
     public : 
         Book(){   
             for(int i=0;i<10;i++){
@@ -42,6 +43,7 @@ class Book{
             }
         }
         void Search_Book(){
+            check = false;
             cout<<"Enter the title book for search : ";cin>>search_item;
             for(int i=0;i<size_lib;i++){
                 if(book_title[i]==search_item){
@@ -49,8 +51,12 @@ class Book{
                     cout<<"Title : "<<book_title[i]<<endl;
                     cout<<"Author : "<<author_name[i]<<endl;
                     cout<<"Quantity : "<<book_qty[i]<<endl;
+                    check = true;
                     break;
                 }
+            }
+            if(check == false){
+                cout<<"Can not found it!!!"<<endl;
             }
         }
         void Issued_Book(){
@@ -64,6 +70,15 @@ class Book{
                     }else{
                         cout<<"You can borrow it."<<endl;
                         issued[i]+=qty_issued;
+                        cout<<"Enter cumstomer borrow book : ";cin>>n;
+                        cin.ignore();
+                        for(int j=0;j<n;j++){
+                            cout<<"Enter Username  : ";getline(cin,username[j]);
+                            cout<<"Enter Tel       : ";getline(cin,tel[j]);
+                            cout<<"Enter Date Time : ";getline(cin,datetime[j]);
+                            issued_qty[j]=issued[i];
+                            title_issued[j] = book_title[i];
+                        }
                     }
 
                 }
@@ -77,6 +92,7 @@ class Book{
                 cout<<"| 3. Search Book.                               "<<endl;
                 cout<<"| 4. Issued Book.                               "<<endl;
                 cout<<"| 5. Return Book.                               "<<endl;
+                cout<<"| 6. Diplay Customer for issued                 "<<endl;
                 cout<<"| 0. Exit.                                      "<<endl;
                 cout<<"================================================"<<endl;
                 cout<<"| => Please enter your choosing : ";cin>>choose;
@@ -107,6 +123,17 @@ class Book{
                         cout<<"                  Issued Book                   "<<endl;
                         cout<<"================================================"<<endl;
                         Issued_Book();
+                        break;
+                    }
+                    case 6 : {
+                        cout<<"================================================"<<endl;
+                        cout<<"                 Display Customer               "<<endl;
+                        cout<<"================================================"<<endl;
+                        cout<<"Username"<<setw(16)<<"Tel"<<setw(12)<<"Date Time"<<setw(12)<<"Title"<<setw(12)<<"Issued"<<endl;
+                        for(int i=0;i<n;i++){
+                            cout<<username[i]<<setw(16)<<tel[i]<<setw(12)<<datetime[i]<<setw(12)<<title_issued~[i]<<setw(12)<<issued_qty[i]<<endl;
+                            cout<<"================================================"<<endl;
+                        }
                         break;
                     }
                 }
