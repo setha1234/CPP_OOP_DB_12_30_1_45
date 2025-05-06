@@ -84,6 +84,21 @@ class Book{
                 }
             }
         }
+        void Return_Book(){
+            string title_return;
+            int return_issued;
+            cout<<"Enter the title Book to return : ";cin>>title_return;
+            for(int i=0;i<size_lib;i++){
+                if(book_title[i]==title_return){
+                    cout<<"How many for return : ";cin>>return_issued;
+                    if(return_issued>issued[i]){
+                        cout<<"Your return to much."<<endl;
+                    }else {
+                        issued[i]-=return_issued;
+                    }
+                }
+            }
+        }
         void Menu(){
             do{
                 cout<<"================================================"<<endl;
@@ -125,13 +140,20 @@ class Book{
                         Issued_Book();
                         break;
                     }
+                    case 5 : {
+                        cout<<"================================================"<<endl;
+                        cout<<"                  Return Book                   "<<endl;
+                        cout<<"================================================"<<endl;
+                        Return_Book();
+                        break;
+                    }
                     case 6 : {
                         cout<<"================================================"<<endl;
                         cout<<"                 Display Customer               "<<endl;
                         cout<<"================================================"<<endl;
                         cout<<"Username"<<setw(16)<<"Tel"<<setw(12)<<"Date Time"<<setw(12)<<"Title"<<setw(12)<<"Issued"<<endl;
                         for(int i=0;i<n;i++){
-                            cout<<username[i]<<setw(16)<<tel[i]<<setw(12)<<datetime[i]<<setw(12)<<title_issued~[i]<<setw(12)<<issued_qty[i]<<endl;
+                            cout<<username[i]<<setw(16)<<tel[i]<<setw(12)<<datetime[i]<<setw(12)<<title_issued[i]<<setw(12)<<issued_qty[i]<<endl;
                             cout<<"================================================"<<endl;
                         }
                         break;
